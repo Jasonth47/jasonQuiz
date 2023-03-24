@@ -1,10 +1,12 @@
 import { useState } from "react";
 import "./App.css";
-import NameBar from "./NameBar";
+// import NameBar from "./NameBar";
 
 const questions = [
+  { text: "what is you name?", type: "text", options: [] },
   {
     text: "How would you order a steak?",
+    type: "multiple-choice",
     options: [
       { id: 0, text: "Well-done", score: -2 },
       { id: 1, text: "Medium", score: 1 },
@@ -15,6 +17,7 @@ const questions = [
   },
   {
     text: "question?",
+    type: "multiple-choice",
     options: [
       { id: 0, text: "boy", score: 1 },
       { id: 1, text: "boy2", score: 2 },
@@ -24,6 +27,7 @@ const questions = [
   },
   {
     text: "question2",
+    type: "multiple-choice",
     options: [
       { id: 0, text: "girl", score: 1 },
       { id: 1, text: "girl2", score: 2 },
@@ -38,15 +42,40 @@ const questions = [
 ];
 
 function App() {
-  const [data, setData] = useState({});
+  // const [data, setData] = useState({});
 
-  const updateData = (nameParams) => {
-    setData(nameParams);
-  };
+  // const updateData = (nameParams) => {
+  //   setData(nameParams);
+  // };
 
   const [showFinalResults, setFinalResults] = useState(false);
   const [score, setScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
+
+  const renderInput = (type, options) => {
+    if (type === "text") {
+      return <input type="text"></input>;
+    } else if (type === "multiple-choice") {
+      return (
+        <ul>
+          {questions[currentQuestion].options.map((option, index) => {
+            return (
+              <div>
+                <label>
+                  <input type="radio" name="answers" value={option.text} />
+                  {option.text}
+                </label>
+              </div>
+            );
+          })}
+        </ul>
+      );
+    }
+  };
+
+  const nextQuestion = () => {
+    setCurrentQuestion(currentQuestion + 1);
+  };
 
   const optionClicked = (questionScore) => {
     setScore(score + questionScore);
@@ -66,7 +95,7 @@ function App() {
 
       {showFinalResults ? (
         <div clasName="final-results">
-          <h2></h2>
+          <h2>Nick</h2>
           <button></button>
         </div>
       ) : (
@@ -75,16 +104,12 @@ function App() {
             Question {currentQuestion + 1} out of {questions.length}
           </h2>
           <h3 className="question-text">{questions[currentQuestion].text}</h3>
-
-          <ul>
-            {questions[currentQuestion].options.map((option) => {
-              return (
-                <li onClick={() => optionClicked(option.score)} key={option.id}>
-                  {option.text}
-                </li>
-              );
-            })}
-          </ul>
+          {renderInput(
+            questions[currentQuestion].type,
+            questions[currentQuestion].options
+          )}
+          <br></br>
+          <button onClick={nextQuestion}>Next</button>
         </div>
       )}
 
@@ -96,13 +121,13 @@ function App() {
   );
 }
 
-function Title() {
-  return (
-    <div>
-      <h1>Whould We Be Friends?</h1>
-    </div>
-  );
-}
+// function Title() {
+//   return (
+//     <div>
+//       <h1>Whould We Be Friends?</h1>
+//     </div>
+//   );
+// }
 
 // function ListAnswers(answers) {
 //   const answerElements = [];
