@@ -40,42 +40,42 @@ const questions = [
   // },
 ];
 
+const RenderInput = (props) => {
+  const { type, options, onAnswer } = props;
+  const handleAnswerChange = (event) => {
+    console.log(event);
+    onAnswer(event.target.value);
+  };
+  if (type === "text") {
+    return <input type="text"></input>;
+  } else if (type === "multiple-choice") {
+    return (
+      <div>
+        {options.map((option, index) => {
+          return (
+            <div key={index}>
+              <label>
+                <input
+                  type="radio"
+                  name="answers"
+                  value={option.text}
+                  onChange={handleAnswerChange}
+                />
+                {option.text}
+              </label>
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+};
+
 function App() {
   const [showFinalResults, setFinalResults] = useState(false);
   const [score, setScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState([]);
-
-  const RenderInput = (props) => {
-    const { type, options, onAnswer } = props;
-    const handleAnswerChange = (event) => {
-      console.log(event);
-      onAnswer(event.target.value);
-    };
-    if (type === "text") {
-      return <input type="text"></input>;
-    } else if (type === "multiple-choice") {
-      return (
-        <div>
-          {options.map((option, index) => {
-            return (
-              <div key={index}>
-                <label>
-                  <input
-                    type="radio"
-                    name="answers"
-                    value={option.text}
-                    onChange={handleAnswerChange}
-                  />
-                  {option.text}
-                </label>
-              </div>
-            );
-          })}
-        </div>
-      );
-    }
-  };
 
   const nextQuestion = (questionScore) => {
     // setScore(score + questionScore);
