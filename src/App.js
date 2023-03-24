@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./App.css";
-// import NameBar from "./NameBar";
 
 const questions = [
   { text: "what is you name?", type: "text", options: [] },
@@ -42,12 +41,6 @@ const questions = [
 ];
 
 function App() {
-  // const [data, setData] = useState({});
-
-  // const updateData = (nameParams) => {
-  //   setData(nameParams);
-  // };
-
   const [showFinalResults, setFinalResults] = useState(false);
   const [score, setScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -112,48 +105,8 @@ function App() {
           <button onClick={nextQuestion}>Next</button>
         </div>
       )}
-
-      {/* /* <Title /> */}
-      {/* <NameBar callback={updateData} />
-      <p>{"name" in data ? data["name"] : "No Data to display"}</p> */}
-      {/* <NameInput />  */}
     </div>
   );
 }
-
-// function Title() {
-//   return (
-//     <div>
-//       <h1>Whould We Be Friends?</h1>
-//     </div>
-//   );
-// }
-
-// function ListAnswers(answers) {
-//   const answerElements = [];
-//   for (const [index, answer] of answers.entries()) {
-//     answerElements.push(
-//       <div>
-//         <label htmlFor={index}>{answer}</label>
-//         <input name="test" type="radio" id={index}></input>
-//       </div>
-//     );
-//   }
-//   return answerElements;
-// }
-
-// function NameInput() {
-//   let elements = [];
-//   for (const question of questions) {
-//     elements.push(
-//       <div>
-//         <p>{question.question}</p>
-
-//         <ul>{ListAnswers(question.answers)}</ul>
-//       </div>
-//     );
-//   }
-//   return <form>{elements}</form>;
-// }
 
 export default App;
