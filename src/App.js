@@ -14,7 +14,7 @@ const questions = [
     text: "How would you order a steak?",
     type: "multiple-choice",
     options: [
-      { text: "Well-done", score: -2 },
+      { text: "Well-done", score: -5 },
       { text: "Medium", score: 1 },
       { text: "Medium-Rare", score: 2 },
       { text: "Rare", score: 1 },
@@ -22,25 +22,62 @@ const questions = [
     ],
   },
   {
-    id: "boyChoice",
-    text: "question?",
+    id: "nerd",
+    text: "How much of a NERD are you?",
     type: "multiple-choice",
     options: [
-      { text: "boy", score: 1 },
-      { text: "boy2", score: 2 },
-      { text: "boy3", score: 3 },
-      { text: "boy4", score: 4 },
+      { text: "0", score: -2 },
+      { text: "2", score: 1 },
+      { text: "4", score: 1 },
+      { text: "6", score: 2 },
+      { text: "8", score: 1 },
+      { text: "10", score: 0 },
     ],
   },
   {
-    id: "girlChoice",
-    text: "question2",
+    id: "drink",
+    text: "Alcholics drink of choice?",
     type: "multiple-choice",
     options: [
-      { text: "girl", score: 1 },
-      { text: "girl2", score: 2 },
-      { text: "girl3", score: 3 },
-      { text: "girl4", score: 4 },
+      { text: "Old Fashioned", score: 2 },
+      { text: "Sweet Wine", score: 0 },
+      { text: "Beer", score: 2 },
+      { text: "Martini", score: 0 },
+      { text: "Shots of Tequila", score: 1 },
+      { text: "I dont drink", score: 1 },
+    ],
+  },
+  {
+    id: "dog",
+    text: "How introvrted are you?",
+    type: "multiple-choice",
+    options: [
+      { text: "full introvert", score: 0 },
+      { text: "somewhat introvert", score: 2 },
+      { text: "somewhat extrovert", score: 2 },
+      { text: "full exrovert", score: 0 },
+    ],
+  },
+  {
+    id: "cat",
+    text: "question5",
+    type: "multiple-choice",
+    options: [
+      { text: "cat", score: 1 },
+      { text: "cat2", score: 2 },
+      { text: "cat3", score: 3 },
+      { text: "cat4", score: 4 },
+    ],
+  },
+  {
+    id: "car",
+    text: "question6",
+    type: "multiple-choice",
+    options: [
+      { text: "car", score: 1 },
+      { text: "car2", score: 2 },
+      { text: "car3", score: 3 },
+      { text: "car4", score: 4 },
     ],
   },
 ];
@@ -74,6 +111,7 @@ const Question = (props) => {
                   value={option.score}
                   onChange={handleAnswerChange}
                 />
+
                 {option.text}
               </label>
             </div>
@@ -106,6 +144,7 @@ function App() {
   const [showFinalResults, setFinalResults] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState({});
+  const [isAnswerSelected, setIsAnswerSelected] = useState(false); // new state variable
   const isDesktopOrLaptop = useMediaQuery({
     query: "(min-width: 1224px)",
   });
@@ -115,6 +154,7 @@ function App() {
   const nextQuestion = () => {
     if (currentQuestion + 1 < questions.length) {
       setCurrentQuestion(currentQuestion + 1);
+      setIsAnswerSelected(false);
     } else {
       setFinalResults(true);
     }
@@ -123,6 +163,7 @@ function App() {
   const handleAnswer = (questionId, answer) => {
     const newAnswers = { ...answers, [questionId]: answer };
     setAnswers(newAnswers);
+    setIsAnswerSelected(answer ? true : false);
   };
 
   return (
@@ -143,7 +184,11 @@ function App() {
             onAnswer={handleAnswer}
           />
           <br></br>
-          <button onClick={nextQuestion} className="buttonNext">
+          <button
+            onClick={nextQuestion}
+            className="buttonNext"
+            disabled={!isAnswerSelected}
+          >
             Next
           </button>
         </div>
