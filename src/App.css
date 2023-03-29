@@ -1,0 +1,30 @@
+.app {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: cyan;
+    margin: 20px;
+    border-radius: 30px;
+    min-width: 400px;
+    max-width: 950px;
+    @media (min-width: 600px) {
+        margin-top: 400px;
+       }
+
+}
+
+.quest-count{
+    background-color: aquamarine;
+}
+
+.question-text {
+    background-color: azure;
+}
+
+.choices {
+    /* background-color: plum; */
+    
+    border: 10px;
+    border-color: black;
+}
+
