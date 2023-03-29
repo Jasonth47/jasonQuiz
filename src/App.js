@@ -83,7 +83,7 @@ const questions = [
 ];
 
 const Question = (props) => {
-  const { question, onAnswer } = props;
+  const { question, onAnswer, isChecked } = props;
   const { type, options, id: questionId } = question;
 
   const handleAnswerChange = (event) => {
@@ -110,6 +110,7 @@ const Question = (props) => {
                   name={questionId}
                   value={option.score}
                   onChange={handleAnswerChange}
+                  checked={isChecked(questionId, option.score)}
                 />
 
                 {option.text}
@@ -133,11 +134,15 @@ const Results = (props) => {
     }
   }
 
-  return (
-    <h2>
-      You Finished, {answers.name}! Your final score is {finalScore}.
-    </h2>
-  );
+  if (finalScore < 5) {
+    return <p>final Score &gt; 5</p>;
+  } else if (finalScore < 10) {
+    return <p>final Score &gt; 10</p>;
+  } else if (finalScore < 15) {
+    return <p>final Score &gt; 15</p>;
+  } else {
+    return <p>more than 15</p>;
+  }
 };
 
 function App() {
@@ -166,6 +171,10 @@ function App() {
     setIsAnswerSelected(answer ? true : false);
   };
 
+  const isChecked = (questionId, optionScore) => {
+    return answers[questionId] == optionScore;
+  };
+
   return (
     <div className="app">
       <h1>Would We Be Friends?</h1>
@@ -182,6 +191,7 @@ function App() {
           <Question
             question={questions[currentQuestion]}
             onAnswer={handleAnswer}
+            isChecked={isChecked}
           />
           <br></br>
           <button
