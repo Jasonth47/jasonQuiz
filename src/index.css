@@ -8,7 +8,8 @@ body {
   background-color: bisque;
   display: flex;
   justify-content: center;
-  
+  background-image: url(./images/jase-bloor-oCZHIa1D4EU-unsplash.webp);
+  background-position: 50%;
   
 }
 

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import "./App.css";
+import useWindowSize from "./useWindowSize";
 
 const questions = [
   {
@@ -105,6 +106,11 @@ function App() {
   const [showFinalResults, setFinalResults] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState({});
+  const isDesktopOrLaptop = useMediaQuery({
+    query: "(min-width: 1224px)",
+  });
+  const isBigScreen = useMediaQuery({ query: "(min-width: 1824px)" });
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
 
   const nextQuestion = () => {
     if (currentQuestion + 1 < questions.length) {
@@ -121,8 +127,8 @@ function App() {
 
   return (
     <div className="app">
-      <h1>would we be friends</h1>
-      <h2>Answers:{JSON.stringify(answers)}</h2>
+      <h1>Would We Be Friends?</h1>
+      <h2 className="answers">Answers:{JSON.stringify(answers)}</h2>
 
       {showFinalResults ? (
         <Results answers={answers} />
@@ -137,7 +143,9 @@ function App() {
             onAnswer={handleAnswer}
           />
           <br></br>
-          <button onClick={nextQuestion}>Next</button>
+          <button onClick={nextQuestion} className="buttonNext">
+            Next
+          </button>
         </div>
       )}
     </div>
