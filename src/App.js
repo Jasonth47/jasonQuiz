@@ -152,16 +152,38 @@ const Results = (props) => {
     return (
       <p>
         We seem to have different intrest. Maybe we could exchange hobbies
-        sometime?
+        sometime? <br></br>
+        <a
+          href="https://www.linkedin.com/in/jason-howell-27b34a26a/"
+          id="linkLogo"
+        >
+          Linkedin
+        </a>
       </p>
     );
   } else if (finalScore < 16) {
-    return <p>We should be friends!</p>;
+    return (
+      <p>
+        We should be friends! <br></br>
+        <a
+          href="https://www.linkedin.com/in/jason-howell-27b34a26a/"
+          id="linkLogo"
+        >
+          Linkedin
+        </a>
+      </p>
+    );
   } else {
     return (
       <p>
-        Hey Bro! We should be friends since you scored so high! maybe we could
-        do this random activity that my Bored API picked -{activity}
+        Hey Bro! We should be friends since you scored so high! Maybe we could
+        do this random activity that my Bored API picked -{activity} <br></br>
+        <a
+          href="https://www.linkedin.com/in/jason-howell-27b34a26a/"
+          id="linkLogo"
+        >
+          Linkedin
+        </a>
       </p>
     );
   }
