@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import "./App.css";
 import useWindowSize from "./useWindowSize";
@@ -123,8 +123,18 @@ const Question = (props) => {
   }
 };
 
+const fetchActivity = async (setActivity) => {
+  const response = await fetch(
+    "https://www.boredapi.com/api/activity?type=social&type=relaxation"
+  );
+  const data = await response.json();
+  console.log(data);
+  setActivity(data.activity);
+};
+
 const Results = (props) => {
   const { answers } = props;
+  const [activity, setActivity] = useState(null);
   let finalScore = 0;
 
   for (const key in answers) {
@@ -133,6 +143,9 @@ const Results = (props) => {
       finalScore += answer;
     }
   }
+  useEffect(() => {
+    fetchActivity(setActivity);
+  }, []);
 
   if (finalScore < 5) {
     return <p>final Score &gt; 5</p>;
@@ -141,9 +154,18 @@ const Results = (props) => {
   } else if (finalScore < 15) {
     return <p>final Score &gt; 15</p>;
   } else {
-    return <p>more than 15</p>;
+    return <p>more than 15{activity}</p>;
   }
 };
+
+// const Activity() {
+//   useEffect(() => {
+//     fetch("https://www.boredapi.com/api/activity?type=social&type=relaxation")
+//       .then((response) => response.json())
+//       .then((json) => console.log(json));
+//   }, []);
+
+// }
 
 function App() {
   const [showFinalResults, setFinalResults] = useState(false);
