@@ -11,9 +11,9 @@
     min-height: 410px;
     
 }
-/* .answers {
+.answers {
     display: none;
-} */
+}
 
 .quest-count{
     background-color: rgba(127, 255, 212, 0.723);

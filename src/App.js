@@ -14,10 +14,11 @@ const questions = [
     text: "How would you order a steak?",
     type: "multiple-choice",
     options: [
-      { text: "Well-done", score: -5 },
-      { text: "Medium", score: 1 },
-      { text: "Medium-Rare", score: 2 },
-      { text: "Rare", score: 1 },
+      { text: "Well-Done", score: -5 },
+      { text: "Medium-Well", score: -1 },
+      { text: "Medium", score: 2 },
+      { text: "Medium-Rare", score: 3 },
+      { text: "Rare", score: 0 },
       { text: "Im Vegan", score: 1 },
     ],
   },
@@ -28,9 +29,9 @@ const questions = [
     options: [
       { text: "0", score: -2 },
       { text: "2", score: 1 },
-      { text: "4", score: 1 },
-      { text: "6", score: 2 },
-      { text: "8", score: 1 },
+      { text: "4", score: 3 },
+      { text: "6", score: 4 },
+      { text: "8", score: 2 },
       { text: "10", score: 0 },
     ],
   },
@@ -39,45 +40,45 @@ const questions = [
     text: "Alcholics drink of choice?",
     type: "multiple-choice",
     options: [
-      { text: "Old Fashioned", score: 2 },
-      { text: "Sweet Wine", score: 0 },
-      { text: "Beer", score: 2 },
+      { text: "Old Fashioned", score: 3 },
+      { text: "Wine", score: 2 },
+      { text: "Beer", score: 4 },
       { text: "Martini", score: 0 },
-      { text: "Shots of Tequila", score: 1 },
+      { text: "Shots of Tequila", score: 1.5 },
       { text: "I dont drink", score: 1 },
     ],
   },
   {
-    id: "dog",
+    id: "introv",
     text: "How introvrted are you?",
     type: "multiple-choice",
     options: [
       { text: "full introvert", score: 0 },
-      { text: "somewhat introvert", score: 2 },
+      { text: "somewhat introvert", score: 3 },
       { text: "somewhat extrovert", score: 2 },
-      { text: "full exrovert", score: 0 },
+      { text: "full exrovert", score: 1 },
     ],
   },
   {
-    id: "cat",
-    text: "question5",
+    id: "gym",
+    text: "Do you even lift?",
     type: "multiple-choice",
     options: [
-      { text: "cat", score: 1 },
-      { text: "cat2", score: 2 },
-      { text: "cat3", score: 3 },
-      { text: "cat4", score: 4 },
+      { text: "I enjoy the otudoors", score: 2 },
+      { text: "I lift more than you?", score: 3 },
+      { text: "Gym rat", score: 4 },
+      { text: "I dont get off the couch", score: 0 },
     ],
   },
   {
-    id: "car",
-    text: "question6",
+    id: "music",
+    text: "Favorite genre of music?",
     type: "multiple-choice",
     options: [
-      { text: "car", score: 1 },
-      { text: "car2", score: 2 },
-      { text: "car3", score: 3 },
-      { text: "car4", score: 4 },
+      { text: "Hip-Hop/R&B", score: 4 },
+      { text: "Country", score: 1 },
+      { text: "Indie", score: 3 },
+      { text: "Pop", score: 0 },
     ],
   },
 ];
@@ -147,14 +148,22 @@ const Results = (props) => {
     fetchActivity(setActivity);
   }, []);
 
-  if (finalScore < 5) {
-    return <p>final Score &gt; 5</p>;
-  } else if (finalScore < 10) {
-    return <p>final Score &gt; 10</p>;
-  } else if (finalScore < 15) {
-    return <p>final Score &gt; 15</p>;
+  if (finalScore < 10) {
+    return (
+      <p>
+        We seem to have different intrest. Maybe we could exchange hobbies
+        sometime?
+      </p>
+    );
+  } else if (finalScore < 16) {
+    return <p>We should be friends!</p>;
   } else {
-    return <p>more than 15{activity}</p>;
+    return (
+      <p>
+        Hey Bro! We should be friends since you scored so high! maybe we could
+        do this random activity that my Bored API picked -{activity}
+      </p>
+    );
   }
 };
 
