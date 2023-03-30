@@ -151,8 +151,8 @@ const Results = (props) => {
   if (finalScore < 10) {
     return (
       <p>
-        We seem to have different intrest. Maybe we could exchange hobbies
-        sometime? <br></br>
+        Hey {answers.name}! We seem to have different intrest. Maybe we could
+        exchange hobbies sometime? <br></br>
         <a
           href="https://www.linkedin.com/in/jason-howell-27b34a26a/"
           id="linkLogo"
@@ -174,7 +174,7 @@ const Results = (props) => {
   } else if (finalScore < 16) {
     return (
       <p>
-        We should be friends! <br></br>
+        We should be friends {answers.name}! <br></br>
         <a
           href="https://www.linkedin.com/in/jason-howell-27b34a26a/"
           id="linkLogo"
@@ -196,8 +196,9 @@ const Results = (props) => {
   } else {
     return (
       <p>
-        Hey Bro! We should be friends since you scored so high! Maybe we could
-        do this random activity that my Bored API picked -{activity} <br></br>
+        Hey {answers.name}! We should be friends since you scored so high! Maybe
+        we could do this random activity that my Bored API picked -{activity}{" "}
+        <br></br>
         <a
           href="https://www.linkedin.com/in/jason-howell-27b34a26a/"
           id="linkLogo"
@@ -219,20 +220,11 @@ const Results = (props) => {
   }
 };
 
-// const Activity() {
-//   useEffect(() => {
-//     fetch("https://www.boredapi.com/api/activity?type=social&type=relaxation")
-//       .then((response) => response.json())
-//       .then((json) => console.log(json));
-//   }, []);
-
-// }
-
 function App() {
   const [showFinalResults, setFinalResults] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState({});
-  const [isAnswerSelected, setIsAnswerSelected] = useState(false); // new state variable
+  const [isAnswerSelected, setIsAnswerSelected] = useState(false);
   const isDesktopOrLaptop = useMediaQuery({
     query: "(min-width: 1224px)",
   });
