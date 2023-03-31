@@ -1,70 +1,41 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+I made a Quiz in React!
 
-### `npm test`
+To run my app you just need to run ### `npm -install` and then ### `npm start`
+I am running node version 18.13.0
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+As for my project features:
 
-### `npm run build`
+1.Use arrays, objects, sets or
+maps to store and retrieve
+information that is displayed
+in your app.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2.Analyze data that is stored in
+arrays, objects, sets or maps
+and display information about
+it in your app.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+I used an arry of questions to store a score and display a specific p tag based on the total score.
+I stored a user input string to also display in that p tag.
+I also used components to make sure a button was pressed before being able to hit next in the array.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3.Retrieve data from a
+third-party API and use it to
+display something within your
+app.
 
-### `npm run eject`
+I used a free BORED api and displyed a type specific  activity in the p tag at the end of the quiz if you scored high enough.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4.Develop your project using a
+common JavaScript
+framework such as React
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+I developed this project in the React framework. it was a challenge but learning about how useful using useState and useEffect are along with props to change the state i can see how this framework could be useful in future projects.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
